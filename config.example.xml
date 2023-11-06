@@ -1,6 +1,7 @@
+<!--Пример конфигурации для подключения к БД. Файл конфигурации должен быть config.xml-->
 <root>
-	<ServerName></ServerName>
-	<Database></Database>
-	<UID></UID>
-	<PWD></PWD>
+	<ServerName></ServerName> <!--ip-адрес или доменное имя сервера. Порт всегда 5432-->
+	<Database></Database> <!--Имя базы данных-->
+	<UID></UID> <!--Имя пользователя-->
+	<PWD></PWD> <!--Пароль-->
 </root>
