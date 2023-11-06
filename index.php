@@ -56,7 +56,6 @@
 		}
 
 		$operator = "select id, token, role_id from ABS_USER " . getWhere($where);
-		//echo $operator;
 		$res = $sql->sql_exec($operator);
 
 		if (count($res) == 0) {
@@ -120,7 +119,6 @@
 			break;
 		}
 		$stmt = $operator . " ";
-		//echo $operator;
 		return $stmt;
 	}
 
@@ -141,8 +139,6 @@
 		echo $xml->asXML();
 	}
 
-	//echo(header('content-type: text/xml'));
-	//echo(header('content-type: text'));
 	libxml_clear_errors();
 	libxml_use_internal_errors(TRUE);
 	if (!isset($_POST['request']) and !isset($_GET['test'])) {
@@ -150,34 +146,6 @@
 		exit;
 	} elseif (isset($_POST['request'])) {
 		$request = $_POST['request'];
-	} elseif (isset($_GET['test'])) {
-		$request = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-		<root>
-			<type>UPDATE</type>
-			<entity_type>ACCOUNT</entity_type>
-			<entity>
-				<collection_id>64459</collection_id>
-				<card_pan/>
-				<num>556555</num>
-				<open_date>2003-04-29</open_date>
-				<plan_close_date>2004-05-29</plan_close_date>
-				<s>9.0</s>
-				<agreement_id/>
-				<interest_rate>9.0</interest_rate>
-				<iss_s>9.0</iss_s>
-				<close_date>2004-05-29</close_date>
-				<loan_type>1</loan_type>
-			</entity>
-			<where>
-				<condition>
-					<column>id</column>
-					<operator>=</operator>
-					<value>58408</value>
-				</condition>
-			</where>
-			<token>7c46f5680f815489865a5d81572ef6d7d04d47d6fda983706c445ce59baa1b03</token>
-		</root>	
-		';
 	}
 	
 	$type = null;
@@ -190,13 +158,6 @@
 		$where = $xml->where;
 		$offset = $xml->offset;
 		$fetch = $xml->fetch;
-		/*echo "type = " . $type;
-		echo "entity_type = " . $entity_type;
-		echo "entity = " . $entity->asXML();
-		echo "token = " . $token . PHP_EOL;
-		echo "where = " . $where->asXML() . "\n";
-		echo "offset = " . $offset . "\n";
-		echo "fetch = " . $fetch . "\n";*/
 	} catch (Exception $e) {
 		echo getError(-2);
 		exit;
@@ -218,10 +179,5 @@
 		echo $res;
 		exit;
 	}
-
-	//var_dump($res);
 	echo getXmlFromRes($res);
-	//echo getSql($type, $entity_type, $entity, $token, $where, $offset, $fetch);
-
-	//echo hash("sha256", 'Aa123456');
 ?>
